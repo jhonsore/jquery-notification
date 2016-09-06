@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Plugin</title>
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="jquery.notification.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(
+	function()
+	{
+		//-----------------------------------------
+		$('.bt-error').click(function(){
+			$.notification.callNotification({
+				text: 'Fill in mandatory fields!',
+				timerClose: 8000,
+				class: "error",
+				position:"bottom-right"
+			});
+		});
+
+		//------
+		$('.bt-alert').click(function(){
+			$.notification.callNotification({
+				text: 'Make some Alert!',
+				timerClose: 8000,
+				class: "alert",
+				position:"bottom-left"
+			});
+		});
+
+		//------
+		$('.bt-notif').click(function(){
+			$.notification.callNotification({
+				text: 'Some notification!',
+				timerClose: 8000,
+				position:"top-right"
+			});
+		});
+
+		//-----------------------------------------
+	});
+
+</script>
+<style type="text/css">
+	/*fonts*/
+	@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+	/**/
+	body{ background-color:#fb8383;font-family: 'Roboto', sans-serif;}
+
+	/*reset button appearance*/
+	button{
+		background:none;
+		border: none;
+		-webkit-appearance: none;
+		-moz-appearance:    none;
+		appearance:         none;
+		border-radius: 0;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		outline:none;
+	}
+
+	.bt{ cursor:pointer; margin:20px 0 0 20px; font-size:15px; color:#ffffff;
+		border-radius: 4px;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		background:#323232;
+		border-bottom: 3px solid #1e1d1d;}
+	.bt span{ padding:10px; display:block;}
+
+
+
+	.wrapper-notification{ background-color: #323232; width: 360px; position: fixed; z-index: 999999; display: none;
+		-webkit-box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.4);
+		-moz-box-shadow:    0px 3px 8px 0px rgba(0, 0, 0, 0.4);
+		box-shadow:         0px 3px 8px 0px rgba(0, 0, 0, 0.4);}
+
+
+	.wrapper-notification.error{ background-color: #b10000;}
+	.wrapper-notification.alert{ background-color: #f1c40f;}
+
+	.bt-alert{ background-color: #f1c40f; border-color:#e3b602;}
+	.bt-error{background:#b10000;
+		border-bottom: 3px solid #9f0101;}
+
+	.wrapper-notification.alert .wrapper-notification-text{ color:#ffffff; font-weight:bold;}
+	.wrapper-notification .wrapper-notification-inner{ padding: 22px 40px 22px 25px;}
+	.wrapper-notification .wrapper-notification-text{ color: #ffffff; font-size:15px; line-height:20px;}
+	.wrapper-notification .wrapper-notification-close{ position: absolute; right: 20px; top: 50%; margin-top: -8px;}
+
+	.wrapper-notification .wrapper-notification-close em {width: 16px;height: 16px; display:block; background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDIxMi45ODIgMjEyLjk4MiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjEyLjk4MiAyMTIuOTgyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnIGlkPSJDbG9zZSI+Cgk8cGF0aCBzdHlsZT0iZmlsbC1ydWxlOmV2ZW5vZGQ7Y2xpcC1ydWxlOmV2ZW5vZGQ7IiBkPSJNMTMxLjgwNCwxMDYuNDkxbDc1LjkzNi03NS45MzZjNi45OS02Ljk5LDYuOTktMTguMzIzLDAtMjUuMzEyICAgYy02Ljk5LTYuOTktMTguMzIyLTYuOTktMjUuMzEyLDBsLTc1LjkzNyw3NS45MzdMMzAuNTU0LDUuMjQyYy02Ljk5LTYuOTktMTguMzIyLTYuOTktMjUuMzEyLDBjLTYuOTg5LDYuOTktNi45ODksMTguMzIzLDAsMjUuMzEyICAgbDc1LjkzNyw3NS45MzZMNS4yNDIsMTgyLjQyN2MtNi45ODksNi45OS02Ljk4OSwxOC4zMjMsMCwyNS4zMTJjNi45OSw2Ljk5LDE4LjMyMiw2Ljk5LDI1LjMxMiwwbDc1LjkzNy03NS45MzdsNzUuOTM3LDc1LjkzNyAgIGM2Ljk4OSw2Ljk5LDE4LjMyMiw2Ljk5LDI1LjMxMiwwYzYuOTktNi45OSw2Ljk5LTE4LjMyMiwwLTI1LjMxMkwxMzEuODA0LDEwNi40OTF6IiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==)}
+
+	.wrapper-notification.bottom-left{ bottom: 20px; left: 20px;}
+	.wrapper-notification.top-left{ top: 20px; left: 20px;}
+	.wrapper-notification.bottom-right{ bottom: 20px; right: 20px;}
+	.wrapper-notification.top-right{ top: 20px; right: 20px;}
+</style>
+</head>
+
+<body>
+<button class="bt bt-error">
+	<span>Add Notification Error</span>
+</button>
+
+<button class="bt bt-alert">
+	<span>Add Notification Alert</span>
+</button>
+
+<button class="bt bt-notif">
+	<span>Add Notification </span>
+</button>
+</body>
+</html>
